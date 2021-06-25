@@ -1,0 +1,41 @@
+body {
+  background-color: rgba(0, 0, 0, 0.836);
+  user-select: none;
+}
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+canvas {
+  background: rgba(28, 28, 87, 0.938);
+  opacity: 0.6;
+  cursor: pointer;
+  pointer-events: none;
+}
+.score {
+  position: absolute;
+  top: 150px;
+  left: 60%;
+  color: white;
+}
+.highscore {
+  background-color: white;
+}
+#play {
+  clip-path: polygon(100% 51%, 0 0, 0 100%);
+  background: white;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  top: 335px;
+  transition: all ease 300ms;
+  cursor: pointer;
+}
+#play:hover {
+  transform: scale(1.2);
+  background: rgb(197, 193, 193);
+}
