@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(0, 0, 0, 0.836);
+  background-color: rgb(36, 34, 34);
   user-select: none;
   font-family: "Jomhuria", cursive;
 }
@@ -29,8 +29,9 @@ body {
   background: white;
   height: 150px;
   width: 150px;
-  position: relative;
-  top: -150px;
+  position: absolute;
+  top: 50%;
+  left: 47%;
   transition: all ease 300ms;
   cursor: pointer;
 }
@@ -44,16 +45,16 @@ body {
 }
 canvas {
   background: rgba(28, 28, 87, 0.938);
-  opacity: 0.6;
+
   cursor: pointer;
   pointer-events: none;
   position: relative;
-  top: -100px;
+  top: -50px;
 }
 
 #play:hover {
   transform: scale(1.2);
-  background: linear-gradient(-120deg, blue, green);
+  background: linear-gradient(-120deg, red, rgba(28, 28, 87, 0.938));
 }
 .scores {
   display: flex;
@@ -61,6 +62,7 @@ canvas {
   justify-content: space-between;
   align-items: center;
   width: 500px;
+  color: white;
 }
 #points,
 #pDetails {
@@ -72,10 +74,11 @@ canvas {
   display: none;
 }
 .fa-redo-alt {
+  display: none;
   font-size: 100px;
   position: absolute;
   top: 300px;
-  right: 45%;
+  left: 47%;
   color: white;
   cursor: pointer;
   transition: all ease 300ms;

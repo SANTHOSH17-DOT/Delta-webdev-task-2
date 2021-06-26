@@ -1,13 +1,12 @@
 //highscore localstorage
 var highScore;
-console.log(localStorage.getItem('highScore')==null);
 if(localStorage.getItem('highScore')==null){
     highScore = 0;
     
 }else{
     highScore = localStorage.getItem('highScore');
 }
-console.log(highScore);
+
 document.querySelector('#pDetails').innerHTML = highScore;
 var runner;
 var lane1;
@@ -68,11 +67,10 @@ function component(width,height,color,x,y){
 
 //runner motion
 //click
-console.log(document.querySelector('#canvas'));
+console.log(document.querySelector('canvas'));
 //use of canvas didn't work
 //reason: the element isn't closed(maybe)
 document.querySelector('body').addEventListener('click',function(){
-    console.log('s');
     if(runner.y==50){
         runner.y = 210;
     }
@@ -108,6 +106,8 @@ function updateGameArea(){
             break;
         }
     }
+    console.log(yes1);
+    console.log(yes2);
     if(yes1||yes2){
         runner.update();
         gameArea.stop();
@@ -117,10 +117,11 @@ function updateGameArea(){
             
             //
         }
+        document.querySelector('.fa-redo-alt').style.display = 'block';
         document.querySelector('#reset').style.display = 'block';
         gameArea.canvas.style.opacity = 0.4;
         
-        console.log('1');
+        
     }
     else{
         
@@ -132,13 +133,13 @@ function updateGameArea(){
     lane2.update();
     
     //give random selection of lane aswell.
-    if(gameArea.frameNo%150 == 0){
+    if(gameArea.frameNo%100 == 0){
         decision = Math.floor(Math.random()*2 );
         if(decision==0){
-            obstacle2.push(new component(Math.random()*(200)+100,50,'black',500,0));
+            obstacle2.push(new component(Math.random()*(200)+100,50,'rgba(15, 15, 54, 0.938)',500,0));
         }
         else{
-            obstacle1.push(new component(Math.random()*(200)+100,50,'black',500,250));
+            obstacle1.push(new component(Math.random()*(200)+100,50,'rgba(15, 15, 54, 0.938)',500,250));
         }
     }
     
@@ -151,11 +152,11 @@ function updateGameArea(){
     
     
     for(i = 0;i<obstacle1.length;i++){
-        obstacle1[i].x -=3;
+        obstacle1[i].x -=10;
         obstacle1[i].update();
     }
     for(i = 0;i<obstacle2.length;i++){
-        obstacle2[i].x -=3;
+        obstacle2[i].x -=10;
         obstacle2[i].update();
     }
     gameArea.frameNo +=1;
@@ -165,18 +166,25 @@ function updateGameArea(){
 const playBtn = document.querySelector('#play');
 playBtn.addEventListener('click',()=>{
     document.querySelector('canvas').pointerEvents = 'all';
-    document.querySelector('.intro').style.display = 'none';
+    
+    document.querySelector('.intro').style.display = 'none'
     document.querySelector('.game').style.display = 'flex';
+    count =1;
+    obstacle1 = [];
+    obstacle2= [];
+    document.querySelector('body').style.cursor = 'pointer';
     startGame();
 });
 const resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click',()=>{
+    
+    document.querySelector('.fa-redo-alt').style.display = 'none';
     document.querySelector('#reset').style.display = 'none';
+    
     document.querySelector('.intro').style.display = 'flex';
     document.querySelector('.game').style.display = 'none';
-    startGame();
-        gameArea.canvas.style.opacity = 1;
-    
+    gameArea.canvas.style.opacity = 1;
+    document.querySelector('body').style.cursor = 'auto';
     
 });
 //work on the reset btn.
