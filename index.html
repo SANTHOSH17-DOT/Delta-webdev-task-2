@@ -6,25 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pro Runner basic</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div class="game">
+    <div class="intro">
         <div class="title">
             <h1>Pro Runner</h1>
-            <p>Basic mode</p></div>
+            <p>Basic mode</p>
+        </div>
+
+        <div id="play"></div>
+
+        
+    </div>
+    <div class="game">
+        <!--<div class="title">
+            <h1>Pro Runner</h1>
+            <p>Basic mode</p>
+        </div>-->
+        <div class="scores">
             <div class="score">
-                <h1>Score</h1>
+                <h1 style="position: relative;top: 30px;font-size: 60px;">Score</h1>
                 <p id='points'>0</p>
             </div>
-            <canvas></canvas>
-            <div id="play"></div>
-        <div class='highscore'>
-            <h1>Highscore</h1>
-            <p id="pDetails"></p>
-
+            <div class='highscore'>
+                <h1  style="position: relative;top: 30px;font-size: 60px;"=>Highscore</h1>
+                <p id="pDetails"></p>
+            </div>
         </div>
+        
+        <canvas></canvas>
+            <div id='reset'><i class="fas fa-redo-alt"></i></div>
+        
     </div>
     <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/f4289c64ac.js" crossorigin="anonymous"></script>
 </body>
 </html>

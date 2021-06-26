@@ -1,9 +1,41 @@
 body {
   background-color: rgba(0, 0, 0, 0.836);
   user-select: none;
+  font-family: "Jomhuria", cursive;
+}
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.title {
+  text-align: center;
+}
+.title > h1 {
+  color: white;
+  font-size: 10rem;
+  text-shadow: 10px 10px 10px rgba(133, 133, 136, 0.938);
+}
+.title > p {
+  animation: basicMode 1s ease-in-out 0s infinite;
+  font-size: 70px;
+  position: relative;
+  top: -150px;
+}
+
+#play {
+  clip-path: polygon(100% 51%, 0 0, 0 100%);
+  background: white;
+  height: 150px;
+  width: 150px;
+  position: relative;
+  top: -150px;
+  transition: all ease 300ms;
+  cursor: pointer;
 }
 .game {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -15,27 +47,48 @@ canvas {
   opacity: 0.6;
   cursor: pointer;
   pointer-events: none;
+  position: relative;
+  top: -100px;
 }
-.score {
-  position: absolute;
-  top: 150px;
-  left: 60%;
-  color: white;
-}
-.highscore {
-  background-color: white;
-}
-#play {
-  clip-path: polygon(100% 51%, 0 0, 0 100%);
-  background: white;
-  height: 80px;
-  width: 80px;
-  position: absolute;
-  top: 335px;
-  transition: all ease 300ms;
-  cursor: pointer;
-}
+
 #play:hover {
   transform: scale(1.2);
-  background: rgb(197, 193, 193);
+  background: linear-gradient(-120deg, blue, green);
+}
+.scores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+}
+#points,
+#pDetails {
+  font-size: 40px;
+  position: relative;
+  top: -20px;
+}
+#reset {
+  display: none;
+}
+.fa-redo-alt {
+  font-size: 100px;
+  position: absolute;
+  top: 300px;
+  right: 45%;
+  color: white;
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+.fa-redo-alt:hover {
+  color: rgb(136, 127, 127);
+  transform: rotateZ(120deg);
+}
+@keyframes basicMode {
+  0% {
+    color: rgba(28, 28, 87, 0.938);
+  }
+  80% {
+    color: white;
+  }
 }

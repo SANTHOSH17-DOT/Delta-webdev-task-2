@@ -1,3 +1,14 @@
+//highscore localstorage
+var highScore;
+console.log(localStorage.getItem('highScore')==null);
+if(localStorage.getItem('highScore')==null){
+    highScore = 0;
+    
+}else{
+    highScore = localStorage.getItem('highScore');
+}
+console.log(highScore);
+document.querySelector('#pDetails').innerHTML = highScore;
 var runner;
 var lane1;
 var lane2;
@@ -5,7 +16,7 @@ var obstacle1 = [];
 var obstacle2 = [];
 function startGame(){
     gameArea.start();
-    runner = new component(40,40,'white',10,210);
+    runner = new component(40,40,'white',70,210);
     lane1 = new component(500,50,'red',0,250);
     lane2 = new component(500,50,'red',0,0);
 }
@@ -52,18 +63,15 @@ function component(width,height,color,x,y){
         return crash;
     }
 }
-var score=()=>{
-    score = 500-obstacle2.x;
-    ctx = gameArea.context;
-    ctx.font = '20px Georgia';
-    ctx.fillText('Score '+score,450,0);
-    ctx.fillStyle = 'white';
-}
+
 
 
 //runner motion
 //click
-document.querySelector('canvas').addEventListener('click',function(){
+console.log(document.querySelector('#canvas'));
+//use of canvas didn't work
+//reason: the element isn't closed(maybe)
+document.querySelector('body').addEventListener('click',function(){
     console.log('s');
     if(runner.y==50){
         runner.y = 210;
@@ -103,6 +111,15 @@ function updateGameArea(){
     if(yes1||yes2){
         runner.update();
         gameArea.stop();
+        if(count>highScore){
+            localStorage.setItem('highScore',count-1);
+            document.querySelector('#pDetails').innerHTML = count-1;
+            
+            //
+        }
+        document.querySelector('#reset').style.display = 'block';
+        gameArea.canvas.style.opacity = 0.4;
+        
         console.log('1');
     }
     else{
@@ -110,21 +127,28 @@ function updateGameArea(){
         gameArea.clear();
         
         runner.update();
-        if(count>=2){
-            
-            document.querySelector('#points').innerHTML = 500-obstacle2[0].x;
         
-        }
-        count +=1;
     lane1.update();
     lane2.update();
     
-    if(gameArea.frameNo%300 == 0){
-        obstacle2.push(new component(Math.random()*(200)+100,50,'black',500,0));
+    //give random selection of lane aswell.
+    if(gameArea.frameNo%150 == 0){
+        decision = Math.floor(Math.random()*2 );
+        if(decision==0){
+            obstacle2.push(new component(Math.random()*(200)+100,50,'black',500,0));
+        }
+        else{
+            obstacle1.push(new component(Math.random()*(200)+100,50,'black',500,250));
+        }
     }
-    else if(gameArea.frameNo%150 == 0){
-        obstacle1.push(new component(Math.random()*(200)+100,50,'black',500,250));
-    }
+    
+            
+        document.querySelector('#points').innerHTML = count;
+    
+    
+    count +=1;
+    
+    
     
     for(i = 0;i<obstacle1.length;i++){
         obstacle1[i].x -=3;
@@ -141,6 +165,18 @@ function updateGameArea(){
 const playBtn = document.querySelector('#play');
 playBtn.addEventListener('click',()=>{
     document.querySelector('canvas').pointerEvents = 'all';
-    playBtn.style.display = 'none';
+    document.querySelector('.intro').style.display = 'none';
+    document.querySelector('.game').style.display = 'flex';
     startGame();
 });
+const resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click',()=>{
+    document.querySelector('#reset').style.display = 'none';
+    document.querySelector('.intro').style.display = 'flex';
+    document.querySelector('.game').style.display = 'none';
+    startGame();
+        gameArea.canvas.style.opacity = 1;
+    
+    
+});
+//work on the reset btn.
