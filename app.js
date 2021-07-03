@@ -70,22 +70,52 @@ function component(width,height,color,x,y){
 console.log(document.querySelector('canvas'));
 //use of canvas didn't work
 //reason: the element isn't closed(maybe)
-document.querySelector('body').addEventListener('click',function(){
+document.querySelector('.game').addEventListener('click',function(){
     if(runner.y==50){
-        runner.y = 210;
+        interval = setInterval(()=>{
+            if(runner.y!=210){
+                runner.y+=10
+            }else{
+                clearInterval(interval);
+            }
+            
+        },10);
+        
     }
     else if(runner.y==210){
-        runner.y = 50;
+        interval = setInterval(()=>{
+            if(runner.y!=50){
+                runner.y-=10
+            }else{
+                clearInterval(interval);
+            }
+            
+        },10);
     }
 });
 //spacebar
 window.addEventListener('keypress',(event)=>{
     if(event.keyCode == 32){
         if(runner.y==50){
-            runner.y = 210;
+            interval = setInterval(()=>{
+                if(runner.y!=210){
+                    runner.y+=10
+                }else{
+                    clearInterval(interval);
+                }
+                
+            },10);
+            
         }
         else if(runner.y==210){
-            runner.y = 50;
+            interval = setInterval(()=>{
+                if(runner.y!=50){
+                    runner.y-=10
+                }else{
+                    clearInterval(interval);
+                }
+                
+            },10);
         }
     }
 });
@@ -133,7 +163,7 @@ function updateGameArea(){
     lane2.update();
     
     //give random selection of lane aswell.
-    if(gameArea.frameNo%100 == 0){
+    if(gameArea.frameNo%50 == 0){
         decision = Math.floor(Math.random()*2 );
         if(decision==0){
             obstacle2.push(new component(Math.random()*(200)+100,50,'rgba(15, 15, 54, 0.938)',500,0));
@@ -187,4 +217,4 @@ resetBtn.addEventListener('click',()=>{
     document.querySelector('body').style.cursor = 'auto';
     
 });
-//work on the reset btn.
+//work on the motion of runner. Move the runner
