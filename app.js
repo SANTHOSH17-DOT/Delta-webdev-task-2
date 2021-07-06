@@ -120,6 +120,7 @@ window.addEventListener('keypress',(event)=>{
     }
 });
 var count =1 ;
+var y =10;
 function updateGameArea(){
     
     yes1 = false;
@@ -178,15 +179,18 @@ function updateGameArea(){
     
     
     count +=1;
-    
-    
+    if(count%500 == 0){
+        y +=2;
+    }
+    console.log(y);
     
     for(i = 0;i<obstacle1.length;i++){
-        obstacle1[i].x -=10;
+        
+        obstacle1[i].x -=y;
         obstacle1[i].update();
     }
     for(i = 0;i<obstacle2.length;i++){
-        obstacle2[i].x -=10;
+        obstacle2[i].x -=y;
         obstacle2[i].update();
     }
     gameArea.frameNo +=1;
@@ -200,6 +204,7 @@ playBtn.addEventListener('click',()=>{
     document.querySelector('.intro').style.display = 'none'
     document.querySelector('.game').style.display = 'flex';
     count =1;
+    y =10;
     obstacle1 = [];
     obstacle2= [];
     document.querySelector('body').style.cursor = 'pointer';
