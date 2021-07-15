@@ -43,9 +43,8 @@ body {
   text-align: center;
   height: 100vh;
 }
-canvas {
-  background: rgba(28, 28, 87, 0.938);
-
+#game {
+  background: rgba(41, 41, 134, 0.938);
   cursor: pointer;
   pointer-events: none;
   position: relative;
@@ -61,7 +60,7 @@ canvas {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 500px;
+  width: 800px;
   color: white;
 }
 #points,
