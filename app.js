@@ -19,7 +19,7 @@ ctx.fillRect(15,25,30,30);
 ctx.font = '20px Arial';
 ctx.fillText('Invincibility',50,45);
 ctx.font = '15px Arial';
-ctx.fillText('invincible-5sec',50,65);
+ctx.fillText('Invincible-5sec',50,65);
 
 ctx.fillStyle = 'blue';
 ctx.fillRect(15,90,30,30);
@@ -473,10 +473,10 @@ function updateGameArea(){
             spike.unshift(new spikeS(30,'red',800,320));
         }
         else if(decision==4){
-            spike.unshift(new sphere(30,'red',800,320));
+            spike.unshift(new sphere(20,'red',800,320));
         }
         else if(decision==5){
-            spike.unshift(new sphere(30,'red',800,80));
+            spike.unshift(new sphere(20,'red',800,80));
         }
     }
             
