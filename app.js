@@ -494,20 +494,23 @@ function updateGameArea(){
     //console.log(y);
     //for(i=0;i<flyingSqd.length;i++){
         try{
-            
-                flyingSqd[0].x -=y;
-            if(flyingSqd[0].y==320){
+            for(i=0;i<flyingSqd.length;i++){
+                flyingSqd[i].x -=y;
+            if(flyingSqd[i].y==320){
                 flyud = 1;
-            }else if(flyingSqd[0].y==50){
+            }else if(flyingSqd[i].y==50){
                 flyud = 0;
             }
             if(flyud==0){
-                flyingSqd[0].y +=fs;
+                flyingSqd[i].y +=fs;
             }else{
-                flyingSqd[0].y -=fs;
+                flyingSqd[i].y -=fs;
             }
             
-            flyingSqd[0].update();
+            flyingSqd[i].update();
+
+            }
+                
 
             
             
@@ -516,20 +519,22 @@ function updateGameArea(){
         }
         try{
             
-
-                spike[0].x -=y;
-            if(spike[0].y==320){
-                flyuds = 1;
-            }else if(spike[0].y==80){
-                flyuds = 0;
+            for(i=0;i<spike.length;i++){
+                spike[i].x -=y;
+                if(spike[i].y==320){
+                    flyuds = 1;
+                }else if(spike[i].y==80){
+                    flyuds = 0;
+                }
+                if(flyuds==0){
+                    spike[i].y +=fs;
+                }else{
+                    spike[i].y -=fs;
+                }
+                
+            spike[0].update();
             }
-            if(flyuds==0){
-                spike[0].y +=fs;
-            }else{
-                spike[0].y -=fs;
-            }
-            
-        spike[0].update();
+                
             
             
         }catch{
