@@ -425,7 +425,7 @@ function updateGameArea(){
             for(i=0;i<bgarr.length;i++){
                 gameArea.context.drawImage(bgarr[i],i*img.width-bgx,50);
             }
-            bgx+=0.25;
+            bgx+=1;
             gameArea.context.fillStyle = 'rgba(133, 133, 136, 0.3)';
     gameArea.context.fillRect(0,50,800,300);
         }
