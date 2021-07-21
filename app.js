@@ -45,15 +45,26 @@ var flyingSqd = [];
 var spike = [];
 var powerups = [];
 var rem = 5;
+var bgx = 0;
+
+var img = new Image();
+
+    img.width = 800;
+    img.height = 300;
+
 // global powerup variables
 var invincibility = 0;
 var scorebooster = 0;
 var speedReduction = 0;
 function startGame(){
+    
+    imgDec = Math.floor(Math.random()*2) +1;
+    img.src = `map${imgDec}.jpg`;
+    
     gameArea.start();
     runner = new runComp(90,320,0);
-    lane1 = new component(800,50,'rgba(73, 73, 80, 0.938) ',0,350);
-    lane2 = new component(800,50,'rgba(73, 73, 80, 0.938)',0,0);
+    lane1 = new component(800,50,'rgb(50,0,0)',0,350);
+    lane2 = new component(800,50,'rgb(50,0,0)lack',0,0);
 }
 var gameArea = {
     canvas: document.querySelector('#game'),
@@ -208,8 +219,10 @@ function spikeS(radius,color,x,y){
         ctx.translate(this.x,this.y);
         ctx.strokeStyle= this.color;
         var ang = 0;
+        ctx.beginPath();
         while(ang<360){
             ctx.rotate(ang*Math.PI/180);
+            
             ctx.moveTo(0,0);
             ctx.lineTo(this.radius,0);
             ctx.rotate(-ang*Math.PI/180);
@@ -244,7 +257,7 @@ document.querySelector('.game').addEventListener('click',function(){
       }
      if(runner.y==320){
            var intervalb = setInterval(()=>{
-            runner.ang -=180/8;
+            runner.ang +=180/8;
             runner.y-=30;
           if(runner.y==80){
             clearInterval(intervalb);
@@ -294,7 +307,8 @@ var flyud = 0;
 var flyuds = 0;
 var obsEntry = 1;
 var yes = false;
-var s = 0
+var s = 0;
+var bgarr = [];
 function updateGameArea(){
     
     for(i=0;i<powerups.length;i++){
@@ -314,7 +328,7 @@ function updateGameArea(){
                 setTimeout(()=>{
                     yes=false;
                     invincibility=0;
-                    //problem
+                    
         
                 clearInterval(interval);
                 rem = 5;
@@ -405,7 +419,21 @@ function updateGameArea(){
     }
     else{
         gameArea.clear();
-        
+        try{
+            console.log('s');
+            bgarr.push(img);
+            for(i=0;i<bgarr.length;i++){
+                gameArea.context.drawImage(bgarr[i],i*img.width-bgx,50);
+            }
+            bgx+=0.25;
+            gameArea.context.fillStyle = 'rgba(133, 133, 136, 0.3)';
+    gameArea.context.fillRect(0,50,800,300);
+        }
+       catch{
+
+       }
+    
+    
         runner.update();
     lane1.update();
     lane2.update();
@@ -417,7 +445,7 @@ function updateGameArea(){
     }
     
     //give random selection of lane aswell.
-    console.log(obsEntry);
+    
     if(gameArea.frameNo%(70*obsEntry) == 0){
         decision = Math.floor(Math.random()*2 );
         if(decision==0){
