@@ -6,6 +6,9 @@ if(localStorage.getItem('highScore')==null){
 }else{
     highScore = localStorage.getItem('highScore');
 }
+// Sound effects
+var playGame = new sound('play.wav');
+var runSwitch = new sound('runner.wav');
 
 //powerups tab
 putab =document.querySelector('#powerups');
@@ -242,6 +245,7 @@ console.log(document.querySelector('canvas'));
 //reason: the element isn't closed(maybe)
 document.querySelector('.game').addEventListener('click',function(){
     if(runner.y==80){
+        runSwitch.play();
         var intervala = setInterval(()=>{
       
       
@@ -256,6 +260,7 @@ document.querySelector('.game').addEventListener('click',function(){
     },40);
       }
      if(runner.y==320){
+        runSwitch.play();
            var intervalb = setInterval(()=>{
             runner.ang +=180/8;
             runner.y-=30;
@@ -271,6 +276,7 @@ document.querySelector('.game').addEventListener('click',function(){
 window.addEventListener('keypress',(event)=>{
     if(event.keyCode == 32){
         if(runner.y==80){
+            runSwitch.play();
             var intervala = setInterval(()=>{
           
           
@@ -285,6 +291,7 @@ window.addEventListener('keypress',(event)=>{
         },40);
           }
          if(runner.y==320){
+            runSwitch.play();
                var intervalb = setInterval(()=>{
                 runner.ang +=180/8;
                 runner.y-=30;
@@ -313,6 +320,7 @@ function updateGameArea(){
     
     for(i=0;i<powerups.length;i++){
         if(runner.hole(powerups[i])==true){
+            
             if(powerups[i].color=='gold'){
                 invincibility=1;
                 scorebooster = 0;
@@ -592,6 +600,7 @@ function updateGameArea(){
 }
 const playBtn = document.querySelector('#play');
 playBtn.addEventListener('click',()=>{
+    playGame.play();
     document.querySelector('canvas').pointerEvents = 'all';
     
     document.querySelector('.intro').style.display = 'none'
@@ -623,3 +632,15 @@ resetBtn.addEventListener('click',()=>{
     document.querySelector('body').style.cursor = 'auto';
     
 });
+function sound(src){
+    this.sound = document.createElement('audio');
+    this.sound.src = src;
+    this.sound.style.display = 'none';
+    document.body.appendChild(this.sound);
+    this.play= function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
+}
