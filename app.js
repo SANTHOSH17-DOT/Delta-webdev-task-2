@@ -232,32 +232,41 @@ function spikeS(radius, color, x, y) {
 
 document.querySelector('.game').addEventListener('click', function() {
     if (runner.y <= 80) {
+
         var intervala = setInterval(() => {
 
             console.log(runner.ang, runner.y);
 
-            runner.ang -= 180 / 8;
-            runner.y += 30;
+
             if (runner.y >= 320) {
 
                 clearInterval(intervala);
+            } else {
+                runner.ang -= 180 / 8;
+                runner.y += 30;
             }
 
 
         }, 40);
+
+
     }
     if (runner.y >= 320) {
+
         var intervalb = setInterval(() => {
 
             console.log(runner.ang, runner.y);
-
-            runner.ang += 180 / 8;
-            runner.y -= 30;
             if (runner.y <= 80) {
                 clearInterval(intervalb);
+            } else {
+                runner.ang += 180 / 8;
+                runner.y -= 30;
             }
 
+
+
         }, 40);
+
     }
 
 });
@@ -265,32 +274,41 @@ document.querySelector('.game').addEventListener('click', function() {
 window.addEventListener('keypress', (event) => {
     if (event.keyCode == 32) {
         if (runner.y <= 80) {
+
             var intervala = setInterval(() => {
 
                 console.log(runner.ang, runner.y);
 
-                runner.ang -= 180 / 8;
-                runner.y += 30;
+
                 if (runner.y >= 320) {
 
                     clearInterval(intervala);
+                } else {
+                    runner.ang -= 180 / 8;
+                    runner.y += 30;
                 }
 
 
             }, 40);
+
+
         }
         if (runner.y >= 320) {
+
             var intervalb = setInterval(() => {
 
                 console.log(runner.ang, runner.y);
-
-                runner.ang += 180 / 8;
-                runner.y -= 30;
                 if (runner.y <= 80) {
                     clearInterval(intervalb);
+                } else {
+                    runner.ang += 180 / 8;
+                    runner.y -= 30;
                 }
 
+
+
             }, 40);
+
         }
     }
 });
