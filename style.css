@@ -1,97 +1,108 @@
 body {
-  background-color: rgb(36, 34, 34);
-  user-select: none;
-  font-family: "Jomhuria", cursive;
+    background-color: rgb(36, 34, 34);
+    user-select: none;
+    font-family: "Jomhuria", cursive;
 }
+
 .intro {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
+
 .title {
-  text-align: center;
+    text-align: center;
 }
-.title > h1 {
-  color: white;
-  font-size: 10rem;
-  text-shadow: 10px 10px 10px rgba(133, 133, 136, 0.938);
+
+.title>h1 {
+    color: white;
+    font-size: 10rem;
+    text-shadow: 10px 10px 10px rgba(133, 133, 136, 0.938);
 }
-.title > p {
-  animation: basicMode 1s ease-in-out 0s infinite;
-  font-size: 70px;
-  position: relative;
-  top: -150px;
+
+.title>p {
+    animation: basicMode 1s ease-in-out 0s infinite;
+    font-size: 70px;
+    position: relative;
+    top: -150px;
 }
 
 #play {
-  clip-path: polygon(100% 51%, 0 0, 0 100%);
-  background: white;
-  height: 150px;
-  width: 150px;
-  position: absolute;
-  top: 50%;
-  left: 47%;
-  transition: all ease 300ms;
-  cursor: pointer;
+    clip-path: polygon(100% 51%, 0 0, 0 100%);
+    background: white;
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 47%;
+    transition: all ease 300ms;
+    cursor: pointer;
 }
-.game {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  height: 100vh;
-}
-canvas {
-  background: rgba(28, 28, 87, 0.938);
 
-  cursor: pointer;
-  pointer-events: none;
-  position: relative;
-  top: -50px;
+.game {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+}
+
+canvas {
+    background: rgba(28, 28, 87, 0.938);
+    cursor: pointer;
+    pointer-events: none;
+    position: relative;
+    top: -50px;
 }
 
 #play:hover {
-  transform: scale(1.2);
-  background: linear-gradient(-120deg, red, rgba(28, 28, 87, 0.938));
+    transform: scale(1.2);
+    background: linear-gradient(-120deg, red, rgba(28, 28, 87, 0.938));
 }
+
 .scores {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 500px;
-  color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    color: white;
 }
+
 #points,
 #pDetails {
-  font-size: 40px;
-  position: relative;
-  top: -20px;
+    font-size: 40px;
+    position: relative;
+    top: -20px;
 }
+
 #reset {
-  display: none;
+    display: none;
 }
+
 .fa-redo-alt {
-  display: none;
-  font-size: 100px;
-  position: absolute;
-  top: 300px;
-  left: 47%;
-  color: white;
-  cursor: pointer;
-  transition: all ease 300ms;
-}
-.fa-redo-alt:hover {
-  color: rgb(136, 127, 127);
-  transform: rotateZ(120deg);
-}
-@keyframes basicMode {
-  0% {
-    color: rgba(28, 28, 87, 0.938);
-  }
-  80% {
+    display: none;
+    font-size: 100px;
+    position: absolute;
+    top: 300px;
+    left: 47%;
     color: white;
-  }
+    cursor: pointer;
+    transition: all ease 300ms;
+}
+
+.fa-redo-alt:hover {
+    color: rgb(136, 127, 127);
+    transform: rotateZ(120deg);
+}
+
+@keyframes basicMode {
+    0% {
+        color: rgba(28, 28, 87, 0.938);
+    }
+    80% {
+        color: white;
+    }
 }
